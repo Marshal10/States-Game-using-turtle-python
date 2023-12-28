@@ -16,15 +16,12 @@ turtle.shape(img)
 
 game_on=True
 guessed_states=[]
-missing_states=[]
 while game_on:
     guess=screen.textinput(f"{len(guessed_states)}/{num_of_states} States Correct","What's another state name?").title()
     
     #When player exits
     if guess=="Exit":
-        for state in states:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states=[state for state in states if state not in guessed_states]
         data_dict={
             "Missing States":missing_states
         }
